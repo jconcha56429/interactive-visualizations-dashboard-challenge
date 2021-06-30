@@ -27,7 +27,10 @@ function build_plot(samp){
         type: "bar",
         orientation: 'h',
     }]
-    Plotly.newPlot("bar",trace1)
+    var layout = {
+        title:`Top 10 Bacteria for OTU ${samp.id}`
+    }
+    Plotly.newPlot("bar",trace1,layout)
 }
 function build_bubble(samp){
     var otu_ids = samp.otu_ids;
@@ -44,7 +47,11 @@ function build_bubble(samp){
         }
     }
     var data = [trace2];
-    Plotly.newPlot('bubble',data)
+    var layout = {
+        title:`Bubble Graph of Bacteria in ID #${samp.id}`
+    }
+
+    Plotly.newPlot('bubble',data,layout)
 }
 function demographic_data(data){
     d3.select("tbody").remove()
@@ -60,7 +67,7 @@ function gauge(samp){
         {
           domain: { x: [0, 1], y: [0, 1] },
           value: samp.wfreq,
-          title: { text: "Washing Frequency" },
+          title: { text: `Washing Frequency of ID #${samp.id}` },
           type: "indicator",
           mode: "gauge+number",
           gauge: {
@@ -68,7 +75,7 @@ function gauge(samp){
           }
         }
       ];
-    console.log(samp)
+    console.log(samp)    
     var layout = { width: 600, height: 450, margin: { t: 0, b: 0 } };
     Plotly.newPlot('gauge', data, layout);
 }
