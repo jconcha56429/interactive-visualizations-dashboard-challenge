@@ -79,7 +79,7 @@ function gauge(samp){
     var layout = { width: 600, height: 450, margin: { t: 0, b: 0 } };
     Plotly.newPlot('gauge', data, layout);
 }
-function optionChanged(id){d3.json("../StarterCode/samples.json").then(function (data){
+function optionChanged(id){d3.json("../../data/samples.json").then(function (data){
     var demo_data = (data.metadata);
     var samples = (data.samples);
     samples.forEach(sample=>{
